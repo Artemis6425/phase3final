@@ -1,0 +1,12 @@
+<%= render '/layouts/header'%>
+<h3><%= @user.name %>'s runs</h3>
+
+<% @user.games.uniq.each do |x|%>
+  <h4><%= x.name %></h4>
+  <% x.runs.order(:hour).order(:minute).order(:second).each do |y| %>
+    <% if y.user_id.to_i == @user.id.to_i %>
+    <h5> <%= y.time_formatting %></h5>
+    <% end %>
+  <% end %>
+
+<% end %>

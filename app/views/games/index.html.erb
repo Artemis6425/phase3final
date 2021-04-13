@@ -1,0 +1,7 @@
+<%= render '/layouts/header'%>
+<h3>Games Supported by our Leaderboard Website:</h3>
+<% @game.each do |x| %>
+  <%= link_to x.name, gameindex_url(x.id) %> <br>
+<% end %>
+<br>
+<%= link_to "User Index", userindex_url %>

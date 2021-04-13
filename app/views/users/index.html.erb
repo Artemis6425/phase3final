@@ -1,0 +1,5 @@
+<%= render '/layouts/header'%>
+<h3>All Users:</h3>
+<% @user.each do |x| %>
+  <%= link_to x.name, usershow_path(x)%> <br>
+<% end %>
