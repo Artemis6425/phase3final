@@ -1,4 +1,16 @@
 <%= render '/layouts/header'%>
 <h2>Edit your run:</h2>
+<%= form_for(@run) do |f| %>
+  <%= f.hidden_field :game_id, :value => params[:id] %>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  <label>Hour: </label>
+  <%= f.number_field :hour, in: 0..23, step: 1 %><br>
+  <label>Minute: </label>
+  <%= f.number_field :minute, in: 0..59, step: 1 %><br>
+  <label>Second: </label>
+  <%= f.number_field :second, in: 0..59, step: 1 %><br>
 
-<%= render '/layouts/runform'%>
+  <%= f.submit %>
+  <%=   link_to("Delete Run", deleterun_url, method: :delete) %>
+
+<% end%>

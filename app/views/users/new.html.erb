@@ -1,4 +1,7 @@
 <%= render '/layouts/header'%>
+<% if flash[:notice] %>
+  <br><%= flash[:notice] %>
+<% end %>
 <h2>Sign Up:</h2>
 
 <%= form_for(@user) do |f| %>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/games', to: 'games#index', as: 'gamelist'
   get '/games/:id/runs/new', to: 'runs#new', as: 'newrun'
   get '/games/:id/runs/:id2/edit', to: 'runs#edit', as: 'editrun'
+  delete '/games/:id/runs/:id2/delete', to: 'runs#delete', as: 'deleterun'
 
 
   get '/signup', to: 'users#new', as: 'signup'

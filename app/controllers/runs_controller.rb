@@ -3,6 +3,7 @@ class RunsController < ApplicationController
   
   def new
     @game = Game.find_by_id(params[:id])
+    @allgames = Game.all
     if (@game != nil)
       @run = Run.new
     else
@@ -56,6 +57,25 @@ class RunsController < ApplicationController
     end
   end
 
+  def delete
+    @run = Run.find_by_id(params[:id2])
+    @game = Game.find_by_id(params[:id])
+    if (@run != nil)
+      if @game.id.to_i != @run.game_id.to_i
+        redirect_to games_path #basically so you can't delete runs that don't exist
+      else
+        if @run.user_id.to_i != session[:user_id]
+          redirect_to games_path #redirects if you are not the owner of the run
+        end
+        Run.find(params[:id2]).destroy
+        redirect_to games_path
+      end
+    else
+      redirect_to games_path
+    end
+
+    
+  end
 
 
   private
