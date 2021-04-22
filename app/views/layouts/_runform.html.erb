@@ -1,7 +1,5 @@
-<%= form_for(@run) do |f| %>
-  <label>Game: </label>
-  <%= f.collection_select :game_id, @allgames, :id, :name, include_blank: false %>
-  <label>(NOTE: cannot be changed!)</label><br>
+<%= form_for @run, url: createrun_url do |f| %>
+  <%= f.hidden_field :game_id, :value => params[:id] %>
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
   <label>Hour: </label>
   <%= f.number_field :hour, in: 0..23, step: 1 %><br>

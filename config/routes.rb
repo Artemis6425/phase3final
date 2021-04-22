@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   get '/games/:id/runs/new', to: 'runs#new', as: 'newrun'
   get '/games/:id/runs/:id2/edit', to: 'runs#edit', as: 'editrun'
   delete '/games/:id/runs/:id2/delete', to: 'runs#delete', as: 'deleterun'
+  post '/games/:id/runs/new', to: 'runs#create', as: 'createrun'
 
 
   get '/signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#login'
-  post 'login', to: 'sessions#create'
+  post '/signup', to: 'users#create', as: 'postsignup'
+  get 'login', to: 'users#login'
+  post 'login', to: 'users#postlogin', as: 'postlogin'
   get 'logout', to: 'sessions#destroy'
   post 'logout', to: 'sessions#destroy'
   get '/auth/google_oauth2/callback' => 'sessions#oauthcreate' 

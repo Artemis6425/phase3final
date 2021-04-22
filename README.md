@@ -12,7 +12,7 @@ This project is a pretty simple layout of what a time-based leaderboard could lo
 
 -   You're able to look at the leaderboards without being logged in. I think this is the best decision, as it allows for people to hopefully see times on the board and be inspired to go for times themselves.
 
--   Once you log in through either method, you're given the ability to submit "runs" once you click on a game. Users are able to click a game from the drop down, and are able to type in the digits of their run.
+-   Once you log in through either method, you're given the ability to submit "runs" once you click on a game. Users are able to type in their time for their run in the given boxes.
 
 -   Users are also able to edit their own runs. They cannot change the game, but only change the digits of the time incase they mistyped. If they submitted to the wrong run altogether, they have the ability to delete the run.
 

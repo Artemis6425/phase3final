@@ -1,6 +1,9 @@
 class Run < ApplicationRecord
   belongs_to :game, required: false
   belongs_to :user
+  validates :hour, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 23 }
+  validates :minute, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 59 }
+  validates :second, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 59 }
 
   def add_zero
     if self.minute.length == 1
