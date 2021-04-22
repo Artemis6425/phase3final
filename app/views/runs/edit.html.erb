@@ -1,8 +1,21 @@
 <%= render '/layouts/header'%>
 <h2>Edit your run:</h2>
+  
 
 
 <%= form_for(@run) do |f| %>
+
+<% if @run.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@run.errors.count, "error") %> prohibited this run from being updated:</h4>
+
+      <ul>
+        <% @run.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+
   <%= f.hidden_field :game_id, :value => params[:id] %>
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
   <label>Hour: </label>

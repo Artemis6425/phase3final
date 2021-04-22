@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   def login
     @user = User.new
+    flash[:message] == nil
   end
 
   def postlogin
