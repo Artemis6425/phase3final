@@ -5,7 +5,7 @@
 <% end %>
 
 <% i=1 %>
-<% @game.runs.order(:hour).order(:minute).order(:second).each do |x|%>
+<% @gamesorted.each do |x|%>
   <% if x.user.id == session[:user_id] %>
     <%= i %>. <%= link_to x.user.name, usershow_path(x.user)%> <%= x.time_formatting %> <%= link_to "Edit run", editrun_url(:id2 => x.id) %> <br>
     <% i+=1 %>

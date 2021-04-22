@@ -37,13 +37,14 @@ class RunsController < ApplicationController
 
   def create
     @run = Run.new(run_params)
+
     if @run.valid? == false
       render 'new'
     else
+      @run.add_zero
       if !@run.save
         redirect_to gameindex_url(@run.game_id)
       else
-        @run.add_zero
         @run.save
         redirect_to gameindex_url(@run.game_id)
       end
@@ -52,6 +53,7 @@ class RunsController < ApplicationController
 
   def index
     @game = Game.find_by_id(params[:id])
+    @gamesorted = @game.runs.order(:hour).order(:minute).order(:second)
     if @game == nil
       redirect_to gamelist_url
     end

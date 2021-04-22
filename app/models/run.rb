@@ -1,7 +1,7 @@
 class Run < ApplicationRecord
   belongs_to :game, required: false
   belongs_to :user
-  validates :hour, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 23 }
+  validates :hour, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 23 }, allow_blank: true
   validates :minute, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 59 }
   validates :second, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 59 }
 
@@ -13,6 +13,7 @@ class Run < ApplicationRecord
       self.second = "0"+self.second
     end
   end
+
 
   def time_formatting
     if ((self.hour == 0) || (self.hour == ""))
