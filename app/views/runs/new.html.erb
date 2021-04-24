@@ -3,7 +3,7 @@
 
 
 
-<%= form_for @run, url: createrun_url do |f| %>
+<%= form_for [@game, @run] do |f| %>
 
   <% if @run.errors.any? %>
     <div id="error_explanation">
@@ -17,7 +17,7 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :game_id, :value => params[:id] %>
+  <%= f.hidden_field :game_id %>
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
   <label>Hour: </label>
   <%= f.number_field :hour, in: 0..23, step: 1 %><br>

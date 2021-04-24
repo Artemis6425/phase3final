@@ -1,0 +1,7 @@
+<%= render '/layouts/header'%>
+<h2>Users who have ran <%= @game.name %>:</h2>
+
+
+<% @gameplayers.each do |x|%>
+  <%= link_to x.name, user_path(x)%><br>
+<% end %>

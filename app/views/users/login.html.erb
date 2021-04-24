@@ -1,6 +1,7 @@
 <%= render '/layouts/header'%>
 <% if flash[:notice] %>
   <br><h4><%= flash[:notice] %></h4>
+  <% flash[:notice] = nil %>
 <% end %>
 
 <h2>Log In</h2>

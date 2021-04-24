@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationController #most routes edited
 
   def new 
     @user = User.new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
-        redirect_to gamelist_url
+        redirect_to games_path
       else
         flash[:notice] = "Database error, please try again later!"
         render :new
@@ -31,20 +31,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
     if @user == nil
-      redirect_to gamelist_url
+      redirect_to games_path
     end
   end
 
   def login
     @user = User.new
-    flash[:message] == nil
   end
 
   def postlogin
     @user = User.find_by(name: params[:name])
     if !!@user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to gamelist_url
+      redirect_to games_path
     else
       if @user == nil
         flash[:notice] = "ERROR: Username not found!"

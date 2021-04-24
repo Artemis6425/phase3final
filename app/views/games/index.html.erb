@@ -1,7 +1,19 @@
 <%= render '/layouts/header'%>
+<% if flash[:notice] %>
+  <br><h4><%= flash[:notice] %></h4>
+  <% flash[:notice] = nil %>
+<% end %>
+
 <h3>Games Supported by our Leaderboard Website:</h3>
+
+<h5>Search for all users who have played a specific game!</h5>
+<%= form_tag('/usersplaygames', method: :get) do %>
+  Game: <%= text_field_tag :game %>
+  <%= submit_tag "Search!"%><br>
+<% end %>
+
 <% @game.each do |x| %>
-  <%= link_to x.name, gameindex_url(x.id) %> <br>
+  <%= link_to x.name, game_runs_path(x.id) %> <br>
 <% end %>
 <br>
 <%= link_to "User Index", userindex_url %>

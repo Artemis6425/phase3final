@@ -1,16 +1,16 @@
 <%= render '/layouts/header'%>
 <h3>The <%=@game.name %> Leaderboard</h3>
 <% if session[:user_id] %>
-  <%= link_to "Submit a run here!", newrun_url %><br><br>
+  <%= link_to "Submit a run here!", new_game_run_path %><br><br>
 <% end %>
 
 <% i=1 %>
 <% @gamesorted.each do |x|%>
   <% if x.user.id == session[:user_id] %>
-    <%= i %>. <%= link_to x.user.name, usershow_path(x.user)%> <%= x.time_formatting %> <%= link_to "Edit run", editrun_url(:id2 => x.id) %> <br>
+    <%= i %>. <%= link_to x.user.name, user_path(x.user)%> <%= x.time_formatting %> <%= link_to "Edit run", edit_game_run_path(:id => x.id) %> <br>
     <% i+=1 %>
   <% else %>
-    <%= i %>. <%= link_to x.user.name, usershow_path(x.user)%> <%= x.time_formatting %><br>
+    <%= i %>. <%= link_to x.user.name, user_path(x.user)%> <%= x.time_formatting %><br>
     <% i+=1 %>
   <% end %>
 <% end %>
